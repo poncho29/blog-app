@@ -2,14 +2,14 @@ import { HashRouter, Routes, Route } from "react-router-dom";
 
 import { Menu } from "./components/Menu";
 
-import { HomePage } from "./components/HomePage";
-import { BlogPage } from "./components/BlogPage";
-import { BlogPost } from "./components/BlogPost";
-import { Profile } from "./components/Profile";
-import { LoginPage } from "./components/LoginPage";
-import { LogoutPage } from "./components/LogoutPage";
+import { HomePage } from "./pages/HomePage";
+import { BlogPage } from "./pages/BlogPage";
+import { PostPage } from "./pages/PostPage";
+import { Profile } from "./pages/ProfilePage";
+import { LoginPage } from "./pages/LoginPage";
+import { LogoutPage } from "./pages/LogoutPage";
 
-import { AuthProvider } from "./components/auth";
+import { AuthProvider } from "./context/auth";
 import { PrivateRoute } from "./components/PrivateRoute";
 
 function App() {
@@ -21,7 +21,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/blog" element={<BlogPage />} />
-          <Route path="/blog/:slug" element={<BlogPost />} />
+          <Route path="/blog/:slug" element={<PostPage />} />
           <Route path="/login" element={<LoginPage />} />
 
           <Route path="/logout" element={

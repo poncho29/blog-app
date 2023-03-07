@@ -1,11 +1,15 @@
 import { useNavigate, useParams } from "react-router-dom"
-import { blogData } from './blogData'
+import { useAuth } from "../context/auth"
+import { blogData } from '../data/blogData'
 
-export const BlogPost = () => {
+export const PostPage = () => {
   const { slug } = useParams()
   const navigate = useNavigate()
+  const auth = useAuth()
 
   const post = blogData.find(post => post.slug === slug)
+
+  const canDelete = auth.user?.isAdmin || post.author === auth.user?.username
 
   const goBack = () => {
     navigate('/blog')
@@ -17,6 +21,10 @@ export const BlogPost = () => {
       <button onClick={goBack}>Atras</button>
       <p>{post.content}</p>
       <p>{post.author}</p>
+
+      {canDelete &&
+        <button>Eliminar post</button>
+      }
     </>
   )
 }

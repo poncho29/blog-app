@@ -1,9 +1,10 @@
 import React from 'react'
 
-import { useAuth } from './auth'
+import { useAuth } from '../context/auth'
 
 export const Profile = () => {
   const auth = useAuth()
+  console.log(auth)
 
   return (
     <>

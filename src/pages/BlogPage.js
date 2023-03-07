@@ -1,8 +1,16 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { blogData } from './blogData'
+
+import { blogData } from '../data/blogData'
 
 export const BlogPage = () => {
+  const [newPost, setNewPost] = React.useState({
+    title: '',
+    slug: '',
+    content: '',
+    author: ''
+  })
+
   return (
     <>
       <h1>BlogPage</h1>
@@ -10,6 +18,14 @@ export const BlogPage = () => {
       {blogData.map(post => (
         <BlogLink key={post.slug} post={post} />
       ))}
+
+      <h3>Crear post</h3>
+      <form>
+        <div>
+          <label>Titulo</label>
+          <input type='text' value={newPost.title} />
+        </div>
+      </form>
     </>
   )
 }
