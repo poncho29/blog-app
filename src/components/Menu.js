@@ -1,31 +1,30 @@
 import { NavLink } from 'react-router-dom'
+import { useAuth } from './auth'
 
 export const Menu = () => {
+  const auth = useAuth()
+
   return (
     <nav>
       <ul>
-        {routes.map(route => (
-          <li>
-            <NavLink
-              to={route.to}
-              style={({ isActive }) => ({
-                color: isActive ? 'blue'  : 'red'
-              })} 
-            >
-              {route.text}
-            </NavLink>
-          </li>
-        ))}
+        {routes.map(route => {
+          if (route.private && !auth.user) return null
 
-        {/* <li>
-          <Link to='/'>Home</Link>
-        </li>
-        <li>
-          <Link to='/blog'>Blog</Link>
-        </li>
-        <li>
-          <Link to='/profile'>Profile</Link>
-        </li> */}
+          if (route.publicOnly && auth.user) return null
+
+          return (
+            <li key={route.to}>
+              <NavLink
+                to={route.to}
+                style={({ isActive }) => ({
+                  color: isActive ? 'blue'  : 'red'
+                })} 
+              >
+                {route.text}
+              </NavLink>
+            </li>
+          )
+        })}
       </ul>
     </nav>
   )
@@ -34,14 +33,28 @@ export const Menu = () => {
 const routes = [
   {
     to: '/',
-    text: 'Home'
+    text: 'Home',
+    private: false
   },
   {
     to: '/blog',
-    text: 'blog'
+    text: 'blog',
+    private: false
   },
   {
     to: '/profile',
-    text: 'profile'
+    text: 'profile',
+    private: true
+  },
+  {
+    to: '/login',
+    text: 'Login',
+    private: false,
+    publicOnly: true
+  },
+  {
+    to: '/logout',
+    text: 'logout',
+    private: true
   }
 ]
