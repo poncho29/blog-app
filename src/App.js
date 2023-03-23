@@ -7,7 +7,6 @@ import { BlogPage } from "./pages/BlogPage";
 import { PostPage } from "./pages/PostPage";
 import { Profile } from "./pages/ProfilePage";
 import { LoginPage } from "./pages/LoginPage";
-import { LogoutPage } from "./pages/LogoutPage";
 
 import { AuthProvider } from "./context/auth";
 import { PrivateRoute } from "./components/PrivateRoute";
@@ -24,11 +23,6 @@ function App() {
           <Route path="/blog/:slug" element={<PostPage />} />
           <Route path="/login" element={<LoginPage />} />
 
-          <Route path="/logout" element={
-            <PrivateRoute>
-              <LogoutPage />
-            </PrivateRoute>
-          } />
           <Route path="/profile" element={
             <PrivateRoute>
               <Profile />

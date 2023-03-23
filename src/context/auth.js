@@ -9,8 +9,10 @@ const AuthProvider = ({ children }) => {
   const navigate = useNavigate()
   const [user, setUser] = React.useState(null)  
 
-  const login = ({ username }) => {
-    const isAdmin = adminsData.find(admin => admin.username === username)
+  const login = ({ username, password}) => {
+    const isAdmin = adminsData
+      .find(admin => (admin.username === username && admin.password === password))
+      
     if (isAdmin){
       setUser({...isAdmin})
     } else {
