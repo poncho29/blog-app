@@ -66,18 +66,12 @@ const routes = [
   },
   {
     to: '/blog',
-    text: 'blog',
+    text: 'Blog',
     private: false
   },
   {
     to: '/profile',
     text: 'Profile',
     private: true
-  },
-  // {
-  //   to: '/login',
-  //   text: 'Login',
-  //   private: false,
-  //   publicOnly: true
-  // }
+  }
 ]

@@ -9,28 +9,32 @@ import { Profile } from "./pages/ProfilePage";
 import { LoginPage } from "./pages/LoginPage";
 
 import { AuthProvider } from "./context/auth";
+import { PostProvider } from "./context/posts";
+
 import { PrivateRoute } from "./components/PrivateRoute";
 
 function App() {
   return (
     <HashRouter>
       <AuthProvider>
-        <Menu />
+        <PostProvider>
+          <Menu />
 
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/blog" element={<BlogPage />} />
-          <Route path="/blog/:slug" element={<PostPage />} />
-          <Route path="/login" element={<LoginPage />} />
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/blog" element={<BlogPage />} />
+            <Route path="/blog/:slug" element={<PostPage />} />
+            <Route path="/login" element={<LoginPage />} />
 
-          <Route path="/profile" element={
-            <PrivateRoute>
-              <Profile />
-            </PrivateRoute>
-          } />
-          
-          <Route path="*" element={<p>Not found</p>} />
-        </Routes>
+            <Route path="/profile" element={
+              <PrivateRoute>
+                <Profile />
+              </PrivateRoute>
+            } />
+            
+            <Route path="*" element={<p>Not found</p>} />
+          </Routes>
+        </PostProvider>
       </AuthProvider>
     </HashRouter>
   );

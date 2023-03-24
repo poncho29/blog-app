@@ -99,8 +99,6 @@ export const LoginPage = () => {
                 >
                     LOGIN
                 </Button>
-
-                <pre>{JSON.stringify(values)}</pre>
               </Form>
             )}
           </Formik>
