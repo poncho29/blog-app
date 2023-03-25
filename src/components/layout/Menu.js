@@ -61,7 +61,7 @@ export const Menu = () => {
 const routes = [
   {
     to: '/',
-    text: 'Home',
+    text: 'Inicio',
     private: false
   },
   {
