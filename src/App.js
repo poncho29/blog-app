@@ -1,17 +1,17 @@
 import { HashRouter, Routes, Route } from "react-router-dom";
 
-import { Menu } from "./components/Menu";
+import { Menu } from "./components/layout/Menu";
 
 import { HomePage } from "./pages/HomePage";
 import { BlogPage } from "./pages/BlogPage";
 import { PostPage } from "./pages/PostPage";
 import { Profile } from "./pages/ProfilePage";
-import { LoginPage } from "./pages/LoginPage";
+import { LoginPage } from "./pages/auth/LoginPage";
 
 import { AuthProvider } from "./context/auth";
 import { PostProvider } from "./context/posts";
 
-import { PrivateRoute } from "./components/PrivateRoute";
+import { PrivateRoute } from "./components/privates/PrivateRoute";
 
 function App() {
   return (

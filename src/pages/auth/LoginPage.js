@@ -9,7 +9,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 
-import { useAuth } from '../context/auth'
+import { useAuth } from '../../context/auth'
 
 const schema = Yup.object().shape({
   username: Yup.string().required('EL usuario es requerido'),

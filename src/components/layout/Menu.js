@@ -5,7 +5,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 
-import { useAuth } from '../context/auth'
+import { useAuth } from '../../context/auth'
 
 export const Menu = () => {
   const auth = useAuth()

@@ -7,13 +7,14 @@ import Container from 'react-bootstrap/Container';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 
 import { useAuth } from '../context/auth';
+import { usePosts } from '../context/posts';
+
 import { useModal } from '../hooks/useModal';
 
-import { BlogCard } from '../components/BlogCard'
-import { CreatePost } from '../components/forms/CreatePost';
+import { BlogCard } from '../components/common/BlogCard'
+import { PostForm } from '../components/forms/PostForm';
 
 import DefaultImg from '../assets/images/default-post.jpeg';
-import { usePosts } from '../context/posts';
 import { ShowElement } from '../components/privates/ShowElement';
 
 export const BlogPage = () => {
@@ -92,7 +93,7 @@ export const BlogPage = () => {
         backdrop="static"
         onHide={closeModal}
       >
-        <CreatePost
+        <PostForm
           onSend={createPost}
           onClose={closeModal}
         />
