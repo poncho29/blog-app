@@ -23,7 +23,7 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/blog" element={<BlogPage />} />
-            <Route path="/blog/:slug" element={<PostPage />} />
+            <Route path="/blog/:id" element={<PostPage />} />
             <Route path="/login" element={<LoginPage />} />
 
             <Route path="/profile" element={

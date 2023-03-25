@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { createContext, useContext, useEffect, useState } from "react";
 
 
@@ -7,26 +8,49 @@ const PostProvider = ({ children }) => {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
+    console.log('render')
     const postsStorage = localStorage.getItem('posts');
 
-    if (postsStorage) {
+    if (JSON.parse(postsStorage)) {
       setPosts(JSON.parse(postsStorage));
+    } else {
+      localStorage.setItem('posts', JSON.stringify(posts))
+      setPosts(posts);
     }
   }, []);
 
   const addPost = (post) => {
-    const newPosts = [...posts, post]
+    const newPosts = posts.length === 0
+      ? [post] 
+      : [...posts, post];
+
+    console.log(newPosts)
     localStorage.setItem('posts', JSON.stringify(newPosts))
     setPosts(newPosts);
   }
 
-  const removePost = (slug) => {
-    const newPosts = posts.filter(post => post.slug === slug);
+  const editPost = (id, post) => {
+    let updatePost = posts.map(currentPost => {
+      if (currentPost.id === id) {
+        currentPost = post;
+        return currentPost;
+      }
 
-    setPosts(...posts, newPosts);
+      return currentPost
+    })
+
+    localStorage.setItem('posts', JSON.stringify(updatePost))
+    setPosts(updatePost);
   }
 
-  const post = {posts, addPost, removePost}
+  const removePost = (id) => {
+    const newPosts = posts.filter(post => post.id !== id);
+
+    localStorage.setItem('posts', JSON.stringify(newPosts))
+    setPosts(newPosts);
+  }
+
+  const post = { posts, addPost, editPost, removePost }
 
   return (
     <PostContext.Provider value={post}>

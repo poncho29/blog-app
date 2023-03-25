@@ -12,16 +12,24 @@ export const BlogCard = ({ post }) => {
         style={{ height: '230px', objectFit: 'cover' }}
       />
       <Card.Body>
-        <Card.Title>{post.title}</Card.Title>
+        <Card.Title>
+          {post.title.length > 24
+            ? `${post.title.substring(0, 24)}...`
+            : post.title
+          }
+        </Card.Title>
         <Card.Text>
-          {post.content}
+          {post.content.length > 59
+            ? `${post.content.substring(0, 59)}...`
+            : post.content
+          }
         </Card.Text>
 
         <div className='d-flex justify-content-end'>
           <Button
             as={Link}
             variant="dark"
-            to={`/blog/${post.slug}`}
+            to={`/blog/${post.id}`}
           >
             Ver más
           </Button>

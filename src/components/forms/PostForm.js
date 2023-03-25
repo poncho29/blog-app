@@ -3,9 +3,9 @@ import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import { useState } from 'react';
 
-export const PostForm = ({ onClose, onSend }) => {
+export const PostForm = ({ data, onClose, onSend }) => {
   const [validated, setValidated] = useState(false);
-  const [formState, setFormState] = useState({
+  const [formState, setFormState] = useState(data ? data : {
     title: '',
     urlImg: '',
     content: ''

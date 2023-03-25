@@ -11,11 +11,13 @@ import { usePosts } from '../context/posts';
 
 import { useModal } from '../hooks/useModal';
 
-import { BlogCard } from '../components/common/BlogCard'
+import { generateId } from '../utils/generateId';
+
 import { PostForm } from '../components/forms/PostForm';
+import { BlogCard } from '../components/common/BlogCard';
+import { ShowElement } from '../components/privates/ShowElement';
 
 import DefaultImg from '../assets/images/default-post.jpeg';
-import { ShowElement } from '../components/privates/ShowElement';
 
 export const BlogPage = () => {
   const { user } = useAuth();
@@ -35,12 +37,10 @@ export const BlogPage = () => {
     }
 
     const newPost = {
-      slug: data.title.toLowerCase().split(' ').join('-'),
+      id: generateId(),
       author: user.name,
       ...data
     }
-
-    console.log(newPost);
 
     addPost(newPost)
     closeModal()
@@ -51,14 +51,18 @@ export const BlogPage = () => {
       <h1 className='my-3'>Blogs</h1>
 
       <Row>
-        {posts.map(post => (
-          <Col
-            key={post.slug}
-            xs={12} md={6} lg={4}
-          >
-            <BlogCard post={post} />  
-          </Col>
-        ))}
+        {posts.length > 0 ?
+          posts.map(post => (
+            <Col
+              key={post.id}
+              xs={12} md={6} lg={4}
+            >
+              <BlogCard post={post} />  
+            </Col>
+          ))
+          :
+            <Col>No blogs</Col>
+        }
       </Row>
       
       <ShowElement user={user} permissions={['create']}>
