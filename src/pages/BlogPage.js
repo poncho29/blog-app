@@ -14,6 +14,7 @@ import { CreatePost } from '../components/forms/CreatePost';
 
 import DefaultImg from '../assets/images/default-post.jpeg';
 import { usePosts } from '../context/posts';
+import { ShowElement } from '../components/privates/ShowElement';
 
 export const BlogPage = () => {
   const { user } = useAuth();
@@ -59,7 +60,7 @@ export const BlogPage = () => {
         ))}
       </Row>
       
-      { user && (user.role === ('admin' || 'editor')) &&
+      <ShowElement user={user} permissions={['create']}>
         <OverlayTrigger
           placement="left"
           delay={{ show: 250, hide: 400 }}
@@ -82,7 +83,7 @@ export const BlogPage = () => {
             <span className='fs-2 fw-bold'>+</span>
           </Button>
         </OverlayTrigger>
-      }
+      </ShowElement>
 
       <Modal
         centered

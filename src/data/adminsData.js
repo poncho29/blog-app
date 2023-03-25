@@ -4,21 +4,21 @@ const adminsData = [
     username: 'sebasmen',
     password: '1234567',
     role: 'admin',
-    pemissions: ['fullAccess']
+    permissions: ['fullAccess']
   },
   {
     name: 'Juan David Castro',
     username: 'juandc',
     password: '1234567',
     role: 'editor',
-    pemissions: ['edit', 'create', 'view']
+    permissions: ['edit', 'create']
   },
   {
     name: 'Freddy Vega',
     username: 'freddier',
     password: '1234567',
-    role: 'reader',
-    pemissions: ['view']
+    role: 'viwer',
+    permissions: ['viwer']
   }
 ]
 
