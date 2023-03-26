@@ -18,6 +18,7 @@ import { BlogCard } from '../components/common/BlogCard';
 import { ShowElement } from '../components/privates/ShowElement';
 
 import DefaultImg from '../assets/images/default-post.jpeg';
+import { Link } from 'react-router-dom';
 
 export const BlogPage = () => {
   const { user } = useAuth();
@@ -61,7 +62,16 @@ export const BlogPage = () => {
             </Col>
           ))
           :
-            <Col>No blogs</Col>
+            <Col className='d-flex justify-content-center align-items-center'>
+              <div className='col-12 col-md-6 mt-5 p-3 border rounded-3'>
+                <h3 className='text-center'>Agrega un Post</h3>
+                <p className='text-center mb-0'>
+                  Los post se guardan en el localStorage,
+                  para crear un post inicia sesion con una cuenta de
+                  admin o editor como se mencionan en el <Link to='/'>INICIO</Link>
+                </p>
+              </div>
+            </Col>
         }
       </Row>
       
